@@ -1,26 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Object Volume and Cost Calculator</title>
-    <style>
-        body { margin: 0; }
-        canvas { display: block; }
-        #viewer { width: 100%; height: 400px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Object Volume and Cost Calculator</title>
 </head>
 <body>
-    <input type="file" id="file-input" accept=".stl,.obj,.3mf">
-    <div id="info"></div>
-    <div id="viewer"></div>
-    <script src="three.min.js"></script>
-    <script src="https://unpkg.com/three-mesh-bvh/umd/three-mesh-bvh.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r84/examples/js/loaders/OBJLoader.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r84/examples/js/loaders/3MFLoader.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r84/examples/js/loaders/STLLoader.js"></script>
+  <input type="file" id="file-input" accept=".stl,.obj,.3mf">
+  <div id="container"></div>
 
-    <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
-    <script src="app.js"></script>
+  <script type="module">
+    import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+    import { OBJLoader } from 'https://unpkg.com/three/examples/jsm/loaders/OBJLoader.js';
+    import { STLLoader } from 'https://unpkg.com/three/examples/jsm/loaders/STLLoader.js';
+    import { ThreeMFLoader } from 'https://unpkg.com/three/examples/jsm/loaders/3MFLoader.js';
+
+    
+    
+    import * as THREE from 'three';
+
+    // init
+
+    const camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 10 );
+    camera.position.z = 1;
+
+    const scene = new THREE.Scene();
+
+    const geometry = new THREE.BoxGeometry( 0.2, 0.2, 0.2 );
+    const material = new THREE.MeshNormalMaterial();
+
+    const mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh );
+
+    const renderer = new THREE.WebGLRenderer( { antialias: true } );
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    renderer.setAnimationLoop( animation );
+    document.body.appendChild( renderer.domElement );
+
+    // animation
+
+    function animation( time ) {
+
+        mesh.rotation.x = time / 2000;
+        mesh.rotation.y = time / 1000;
+
+        renderer.render( scene, camera );
+
+    }
+      
+  </script>
 </body>
 </html>
