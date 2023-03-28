@@ -1,31 +1,6 @@
 const fileInput = document.getElementById('file-input');
 const info = document.getElementById('info');
 
-// Set up the 3D viewer
-const viewer = document.getElementById('viewer');
-const width = viewer.clientWidth;
-const height = viewer.clientHeight;
-
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-camera.position.z = 5;
-
-const renderer = new THREE.WebGLRenderer({ alpha: true });
-renderer.setSize(width, height);
-viewer.appendChild(renderer.domElement);
-
-const controls = new THREE.OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
-controls.dampingFactor = 0.25;
-controls.enableZoom = true;
-
-function animate() {
-    requestAnimationFrame(animate);
-    controls.update();
-    renderer.render(scene, camera);
-}
-animate();
-
 
 fileInput.addEventListener('change', (event) => {
     const file = event.target.files[0];
