@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Object Volume and Cost Calculator</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <input type="file" id="file-input" accept=".stl,.obj,.3mf">
+    <div id="info"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://raw.githubusercontent.com/jcmellado/js-aruco/master/src/aruco.js"></script>
+    <script src="https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/js/loaders/STLLoader.js"></script>
+    <script src="https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/js/loaders/OBJLoader.js"></script>
+    <script src="https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/js/loaders/3MFLoader.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
