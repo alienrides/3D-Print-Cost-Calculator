@@ -106,6 +106,7 @@ loader.parse(data, (object) => {
     controls.update();
 });
 
+
 // Set up the 3D viewer
 const viewer = document.getElementById('viewer');
 const width = viewer.clientWidth;
